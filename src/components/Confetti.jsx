@@ -10,7 +10,7 @@ const canvasStyles = {
   left: 0
 };
 
-export default function Realistic({ win }) {
+export default function Realistic({ pop }) {
   const refAnimationInstance = useRef(null);
 
   const getInstance = useCallback((instance) => {
@@ -55,7 +55,9 @@ export default function Realistic({ win }) {
     });
   }, [makeShot]);
 
-  if (win) { fire() }
+  if (pop) {
+    fire()
+  }
 
   return (
     <>
