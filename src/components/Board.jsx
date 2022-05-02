@@ -11,7 +11,10 @@ const Board = () => {
 	const [running, setRunning] = useState('idle')
 	const [time, setTime] = useState(0)
 
-	const [best, setBest] = useState(0)
+	// Get highscore from local storage
+	const [best, setBest] = useState(
+		() => Number(localStorage.getItem('highscore'))
+	)
 
 	// Determine winner
 	useEffect(() => {
@@ -44,6 +47,11 @@ const Board = () => {
 
 		return () => clearInterval(timer)
 	}, [running])
+
+	// Save high score to local storage
+	useEffect(() => {
+		localStorage.setItem("highscore", best)
+	}, [best])
 
 	function generate_dice() {
 		const list = []
